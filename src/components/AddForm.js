@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from 'react-bootstrap/Form'
 import Card from "react-bootstrap/Card"
 
-function AddForm() {
+function AddForm(props) {
   return (
     <React.Fragment>
       <Card>

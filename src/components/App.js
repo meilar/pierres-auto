@@ -1,7 +1,7 @@
 import logo from './../logo.svg';
 import './../App.css';
 import Header from './Header';
-import OilController from './OilController';
+import OilControl from './OilControl';
 import ShopInfo from './ShopInfo'
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -17,7 +17,7 @@ function App() {
             <ShopInfo />
           </div>
           <div className="col-8">
-           <OilController />
+           <OilControl />
           </div>
         </div>
       </Container>

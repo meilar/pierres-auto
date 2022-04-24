@@ -19,14 +19,21 @@ const testData = [
 }
 ]
 
-function OilController() {
-  return (
-    <React.Fragment>
-      <OilList 
-        inventoryList={testData}/>
-      <AddForm />
-    </React.Fragment>
-  )
-}
+class OilControl extends React.Component {
 
-export default OilController;
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        <OilList 
+          inventoryList={testData}/>
+        <AddForm />
+      </React.Fragment>
+    )
+  }
+}
+export default OilControl;
