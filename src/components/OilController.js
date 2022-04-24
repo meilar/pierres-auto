@@ -1,5 +1,6 @@
 import React from "react";
 import OilList from "./OilList";
+import AddForm from './AddForm';
 
 const testData = [
   {
@@ -23,6 +24,7 @@ function OilController() {
     <React.Fragment>
       <OilList 
         inventoryList={testData}/>
+      <AddForm />
     </React.Fragment>
   )
 }
