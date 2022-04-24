@@ -5,7 +5,15 @@ import PropTypes from "prop-types";
 function OilList(props) {
   return (
     <React.Fragment>
-      <OilDetail />
+      {props.inventoryList.map((oil, index) =>
+        <OilDetail 
+          name={oil.name}
+          brand={oil.brand}
+          inventory={oil.inventory}
+          type={oil.type}
+          rating={oil.rating}
+          key={index}/>
+      )}
     </React.Fragment>
   )
 }
