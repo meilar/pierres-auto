@@ -1,6 +1,7 @@
 import React from "react";
 import OilList from "./OilList";
 import AddForm from './AddForm';
+import Button from 'react-bootstrap/Button'
 
 const testData = [
   {
@@ -23,15 +24,28 @@ class OilControl extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      formVisible: false
+    };
+  }
+
+  addClick = () => {
+    this.setState({formVisible: true});
   }
 
   render() {
+    let currentlyVisibleState = null;
+    let addOilButton = null;
+    if (this.state.formVisible) {
+      currentlyVisibleState = <AddForm />
+    } else {
+      currentlyVisibleState = <OilList inventoryList={testData}/>
+      addOilButton = <Button onClick={this.addClick}>Add Motor Oil</Button>
+    }
     return (
       <React.Fragment>
-        <OilList 
-          inventoryList={testData}/>
-        <AddForm />
+        {currentlyVisibleState}
+        {addOilButton}
       </React.Fragment>
     )
   }

@@ -8,8 +8,6 @@ function AddForm(props) {
     <React.Fragment>
       <Card>
         <Card.Body>
-          <Button>Add Motor Oil</Button>
-          <hr />
           <div id="inputForm">
             <Form>
               <Form.Group className="mb-3" controlId="formName">

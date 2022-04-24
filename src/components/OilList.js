@@ -2,20 +2,34 @@ import React from 'react';
 import OilDetail from './OilDetail';
 import PropTypes from "prop-types";
 
-function OilList(props) {
-  return (
-    <React.Fragment>
-      {props.inventoryList.map((oil, index) =>
-        <OilDetail 
-          name={oil.name}
-          brand={oil.brand}
-          inventory={oil.inventory}
-          type={oil.type}
-          rating={oil.rating}
-          key={index}/>
-      )}
-    </React.Fragment>
-  )
+class OilList extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      detailsVisible: false
+    };
+  }
+
+  toggleDetails = (previousState) => {
+    this.setState({detailsVisible: !previousState});
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        {this.props.inventoryList.map((oil, index) =>
+          <OilDetail 
+            name={oil.name}
+            brand={oil.brand}
+            inventory={oil.inventory}
+            type={oil.type}
+            rating={oil.rating}
+            key={index}/>
+        )}
+      </React.Fragment>
+    )
+  }
 }
 
 OilDetail.propTypes = {
