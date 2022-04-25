@@ -27,7 +27,9 @@ class OilList extends React.Component {
             inventory={oil.inventory}
             type={oil.type}
             rating={oil.rating}
-            key={index}/>
+            index={index}
+            key={index}
+            onSalesClick={this.props.onSalesClick}/>
         )}
       </React.Fragment>
     )
@@ -39,7 +41,9 @@ OilDetail.propTypes = {
   brand: PropTypes.string,
   inventory: PropTypes.number,
   type: PropTypes.string,
-  rating: PropTypes.string
+  rating: PropTypes.string,
+  index: PropTypes.number,
+  onSalesClick: PropTypes.func
 }
 
 export default OilList;

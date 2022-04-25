@@ -30,6 +30,10 @@ class OilControl extends React.Component {
     };
   }
 
+  onSalesClick = (index) => {
+    console.log(index);
+  }
+
   onNewOilAdd = (newOil) => {
     const newInventory = this.state.inventory.concat(newOil);
     this.setState({inventory: newInventory});
@@ -46,8 +50,9 @@ class OilControl extends React.Component {
       currentlyVisibleState = <AddForm 
       onNewOilAdd = {this.onNewOilAdd}/>
     } else {
-      currentlyVisibleState = <OilList inventoryList={this.state.inventory}/>
-
+      currentlyVisibleState = <OilList 
+        inventoryList={this.state.inventory}
+        onSalesClick={this.onSalesClick}/>
     }
     return (
       <React.Fragment>

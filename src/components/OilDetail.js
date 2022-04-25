@@ -19,6 +19,11 @@ class OilDetail extends React.Component {
     this.setState({showDetails: false});
   }
 
+  salesClick = () => {
+    const index = this.props.index;
+    this.props.onSalesClick(index);
+  }
+
   render() {
 
     let cardVisibility = null;
@@ -43,8 +48,8 @@ class OilDetail extends React.Component {
               <Card.Text className='text-warning'>Type: {this.props.type}</Card.Text>
               <Card.Text className="text-danger">Rating: {this.props.rating}</Card.Text>
               <Card.Text className="text-primary">Quarts remaining: {this.props.inventory}</Card.Text>
-              <Button variant="success">SALE: 1 Qt</Button>
               <Button onClick={this.hideClick} variant="light">Close Details</Button>
+              <Button onClick={this.salesClick} variant="success">SALE: 1 Quart</Button>
             </Card.Body>
           </Card>
         </div>
