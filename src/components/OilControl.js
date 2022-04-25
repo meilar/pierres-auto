@@ -30,6 +30,7 @@ class OilControl extends React.Component {
   }
 
   addClick = () => {
+    console.log("addclick too")
     this.setState({formVisible: true});
   }
 
@@ -40,7 +41,7 @@ class OilControl extends React.Component {
       currentlyVisibleState = <AddForm />
     } else {
       currentlyVisibleState = <OilList inventoryList={testData}/>
-      addOilButton = <Button onClick={this.addClick}>Add Motor Oil</Button>
+      addOilButton = <Button variant="success" onClick={this.addClick}>Add Motor Oil</Button>
     }
     return (
       <React.Fragment>
