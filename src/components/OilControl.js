@@ -25,28 +25,34 @@ class OilControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      formVisible: false
+      formVisible: false,
+      inventory: testData
     };
   }
 
+  onNewOilAdd = (newOil) => {
+    const newInventory = this.state.inventory.concat(newOil);
+    this.setState({inventory: newInventory});
+    this.setState(prevState => ({formVisible: !prevState.formVisible}));
+  }
+
   addClick = () => {
-    console.log("addclick too")
-    this.setState({formVisible: true});
+    this.setState(prevState => ({formVisible: !prevState.formVisible}));
   }
 
   render() {
     let currentlyVisibleState = null;
-    let addOilButton = null;
     if (this.state.formVisible) {
-      currentlyVisibleState = <AddForm />
+      currentlyVisibleState = <AddForm 
+      onNewOilAdd = {this.onNewOilAdd}/>
     } else {
-      currentlyVisibleState = <OilList inventoryList={testData}/>
-      addOilButton = <Button variant="success" onClick={this.addClick}>Add Motor Oil</Button>
+      currentlyVisibleState = <OilList inventoryList={this.state.inventory}/>
+
     }
     return (
       <React.Fragment>
         {currentlyVisibleState}
-        {addOilButton}
+        <Button variant="success" onClick={this.addClick}>Add Motor Oil</Button>
       </React.Fragment>
     )
   }

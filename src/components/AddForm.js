@@ -2,14 +2,29 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Form from 'react-bootstrap/Form'
 import Card from "react-bootstrap/Card"
+import PropTypes from "prop-types";
 
 function AddForm(props) {
+
+  function handleNewOil(event) {
+    event.preventDefault();
+    const newOil = {
+      name: event.target.formName.value, 
+      brand: event.target.formBrand.value, 
+      rating: event.target.formRating.value,
+      type: event.target.formType.value,
+      inventory: event.target.formInventory.value
+      }
+    props.onNewOilAdd(newOil);
+  }
+
+
   return (
     <React.Fragment>
       <Card>
         <Card.Body>
           <div id="inputForm">
-            <Form>
+            <Form onSubmit={handleNewOil}>
               <Form.Group className="mb-3" controlId="formName">
                 <Form.Label>Motor Oil Name</Form.Label>
                 <Form.Control type="text" placeholder="Winter Heavy-Duty Blend" />
@@ -22,9 +37,9 @@ function AddForm(props) {
                 <Form.Label>Oil Type</Form.Label>
                 <Form.Select className="form-control" aria-label="Default select example">
                   <option>Choose a type</option>
-                  <option value="1">Conventional</option>
-                  <option value="2">Synthetic</option>
-                  <option value="3">Blend</option>
+                  <option value="Conventional">Conventional</option>
+                  <option value="Synthetic">Synthetic</option>
+                  <option value="Blend">Blend</option>
                 </Form.Select>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formRating">
@@ -47,6 +62,10 @@ function AddForm(props) {
       </Card>
     </React.Fragment>
   )
+}
+
+AddForm.propTypes = {
+  onNewOilAdd: PropTypes.func
 }
 
 export default AddForm;
