@@ -1,6 +1,7 @@
 import React from 'react';
 import OilDetail from './OilDetail';
 import PropTypes from "prop-types";
+import Button from 'react-bootstrap/Button';
 
 class OilList extends React.Component {
 
@@ -16,16 +17,23 @@ class OilList extends React.Component {
   }
 
   render() {
+    
     return (
       <React.Fragment>
         {this.props.inventoryList.map((oil, index) =>
-          <OilDetail 
+          {if(this.state.detailsVisible) {
+            <OilDetail 
             name={oil.name}
             brand={oil.brand}
             inventory={oil.inventory}
             type={oil.type}
             rating={oil.rating}
-            key={index}/>
+            key={index}/>,
+            <Button variant="light">Close</Button>
+          } else {
+            <Button>{oil.name}</Button>
+          }
+        }
         )}
       </React.Fragment>
     )
