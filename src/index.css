@@ -23,3 +23,15 @@ code {
 .detailRow {
   margin-bottom: 5%;
 }
+
+.main-header {
+  margin-top: 10%;
+  padding: 3%;
+  background-color: aquamarine;
+  border-radius: 50px;
+}
+
+.header-text {
+  text-align: right;
+  padding-top: 1%
+}
