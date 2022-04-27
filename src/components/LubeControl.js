@@ -89,6 +89,13 @@ class LubeControl extends React.Component {
       .filter(lube => lube.id === id)[0]
       .count - 1;
     console.log(newValue);
+    const updatedLube = {...this.state.lubeArray.filter(e => e.id === id)[0], count: newValue};
+    const editedLubeArray = this.state.lubeArray
+      .filter(e => e.id !== id)
+      .concat(updatedLube);
+      this.setState({
+        lubeArray: editedLubeArray
+      });
   }
 
   //DELETE

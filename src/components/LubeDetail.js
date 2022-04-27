@@ -5,7 +5,13 @@ import PropTypes from "prop-types";
 
 function LubeDetail(props) {
 
-  // const lube = props.lube;
+  let saleButton = null;
+
+  if(props.lube.count > 0) {
+    saleButton = <Button onClick={() => props.onClickingSale(props.lube.id)} variant="outline-success">SALE: 1 Quart</Button>;
+  } else {
+    saleButton = <Button disabled variant="secondary">SOLD OUT</Button>
+  }
 
   return (
     <React.Fragment>
@@ -18,7 +24,7 @@ function LubeDetail(props) {
             <Card.Text className="text-danger">Rating: {props.lube.rating}</Card.Text>
             <Card.Text className="text-primary">Quarts remaining: {props.lube.count}</Card.Text>
             {/* eslint-disable-next-line */}
-            <Button onClick={() => props.onClickingSale(props.lube.id)} variant="outline-success">SALE: 1 Quart</Button>
+            {saleButton}
             {/* eslint-disable-next-line */}
             <Button onClick={() => props.onClickingEdit(props.lube.id)} variant="outline-warning">Edit</Button>
             {/* eslint-disable-next-line */}
