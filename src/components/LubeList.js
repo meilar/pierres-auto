@@ -8,13 +8,7 @@ function LubeList(props) {
       {props.lubeList.map((lube) =>
           <Lube 
           name={lube.name}
-          brand={lube.brand}
-          inventory={lube.inventory}
-          type={lube.type}
-          rating={lube.rating}
-          index={lube.id}
-          key={lube.id}
-          onSalesClick={props.onSalesClick}
+          id={lube.id}
           onSelectingLube={props.onSelectingLube}/>
       )}
     </React.Fragment>

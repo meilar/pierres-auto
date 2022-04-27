@@ -111,13 +111,13 @@ class LubeControl extends React.Component {
     
     return (
       <React.Fragment>
-        <div className="row">
+        <div className="row content-area">
           <div className="col-4">
             <LubeList 
               lubeList={this.state.lubeArray}
               onSelectingLube = {this.handleSelectingLube}
               onSalesClick={this.handleSalesClick}/>
-            <Button variant="success" onClick={this.handleAddClick}>Add New Oil</Button>
+            <Button className="addButton" variant="outline-success" onClick={this.handleAddClick}>Add New Oil</Button>
           </div>
           <div className="col-8">
             {mainPanel}

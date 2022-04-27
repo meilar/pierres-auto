@@ -35,3 +35,11 @@ code {
   text-align: right;
   padding-top: 1%
 }
+
+.content-area {
+  margin-top: 7%;
+}
+
+.addButton {
+  margin-top: 3%;
+}
