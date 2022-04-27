@@ -7,13 +7,12 @@ class NewLubeForm extends React.Component {
 
   handleFormSubmission = (event) => {
     event.preventDefault();
-    console.log(event);
     const newLube = {
       name: event.target.formName.value, 
       brand: event.target.formBrand.value, 
       rating: event.target.formRating.value,
       type: event.target.formType.value,
-      count: event.target.formCount.value,
+      count: parseInt(event.target.formCount.value),
       id: v4()
     }
     console.log(newLube);
@@ -37,7 +36,7 @@ class NewLubeForm extends React.Component {
 }
 
 NewLubeForm.propTypes = {
-  onAddLube: PropTypes.func
+  onAddLube: PropTypes.func,
 }
 
 export default NewLubeForm;

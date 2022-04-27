@@ -54,7 +54,6 @@ class LubeControl extends React.Component {
 
   handleSelectingLube = (id) => {
     const selectedLube = this.state.lubeArray.filter(lube => lube.id === id)[0];
-    console.log(selectedLube);
     this.setState({selectedLube : selectedLube});
   }
 
@@ -66,17 +65,22 @@ class LubeControl extends React.Component {
   //UPDATE
 
   handleEditClick = (id) => {
-
+    const selectedLube = this.state.lubeArray.filter(lube => lube.id === id)[0];
+    this.setState({
+      selectedLube : selectedLube,
+      formShowing: false,
+      editShowing: true});
   }
 
-  handleSaveEdit = (editedLube) => {
+  handleSaveEdit = (editedLube, oldId) => {
     const editedLubeArray = this.state.lubeArray
-      .filter(lube => lube.id !== this.state.selectedTicket)
+      .filter(e => e.id !== oldId)
       .concat(editedLube);
     this.setState({
       lubeArray: editedLubeArray,
+      formShowing: false,
       editShowing: false,
-      selectedTicket: null
+      selectedLube: null
     });
   }
 
@@ -104,7 +108,7 @@ class LubeControl extends React.Component {
         onAddLube = {this.handleAddingLube}/>
     } else if (this.state.editShowing) {
       mainPanel = <EditLubeForm 
-        lube = {this.state.selectedLube}
+        lubeToEdit = {this.state.selectedLube}
         handleSaveEdit = {this.handleSaveEdit} />
     } else if (this.state.selectedLube !== null) {
       mainPanel = <LubeDetail 
