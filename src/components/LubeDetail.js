@@ -2,7 +2,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-class OilDetail extends React.Component {
+class LubeDetail extends React.Component {
 
   constructor(props) {
     super(props);
@@ -58,4 +58,14 @@ class OilDetail extends React.Component {
   }
 }
 
-export default OilDetail;
+// OilDetail.propTypes = {
+//   name: PropTypes.string,
+//   brand: PropTypes.string,
+//   inventory: PropTypes.number,
+//   type: PropTypes.string,
+//   rating: PropTypes.string,
+//   index: PropTypes.number,
+//   onSalesClick: PropTypes.func
+// }
+
+export default LubeDetail;
