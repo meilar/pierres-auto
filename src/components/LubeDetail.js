@@ -29,6 +29,8 @@ function LubeDetail(props) {
             <Button onClick={() => props.onClickingEdit(props.lube.id)} variant="outline-warning">Edit</Button>
             {/* eslint-disable-next-line */}
             <Button onClick={() => props.onClickingDelete(props.lube.id)} variant="outline-danger">Delete</Button>
+            {/* eslint-disable-next-line */}
+            <Button onClick={() => props.onClickingClose()} variant="outline-dark">Close</Button>
           </Card.Body>
         </Card>
       </div>
@@ -40,7 +42,8 @@ LubeDetail.propTypes = {
   lube: PropTypes.object,
   onClickingDelete: PropTypes.func,
   onClickingSale: PropTypes.func,
-  onClickingEdit: PropTypes.func
+  onClickingEdit: PropTypes.func,
+  onClickingClose: PropTypes.func
 }
 
 export default LubeDetail;

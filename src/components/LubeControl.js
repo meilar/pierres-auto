@@ -62,6 +62,14 @@ class LubeControl extends React.Component {
     this.setState({selectedLube: selectedLube});
   }
 
+  handleCloseClick = () => {
+    this.setState({
+      formShowing: false,
+      editShowing: false,
+      selectedLube: null
+    })
+  }
+
   //UPDATE
 
   handleEditClick = (id) => {
@@ -114,17 +122,20 @@ class LubeControl extends React.Component {
 
     if (this.state.formShowing) {
       mainPanel = <NewLubeForm 
-        onAddLube = {this.handleAddingLube}/>
+        onAddLube = {this.handleAddingLube}
+        onClickingClose = {this.handleCloseClick}/>
     } else if (this.state.editShowing) {
       mainPanel = <EditLubeForm 
         lubeToEdit = {this.state.selectedLube}
-        handleSaveEdit = {this.handleSaveEdit} />
+        handleSaveEdit = {this.handleSaveEdit}
+        onClickingClose = {this.handleCloseClick} />
     } else if (this.state.selectedLube !== null) {
       mainPanel = <LubeDetail 
         lube = {this.state.selectedLube}
         onClickingDelete = {this.handleDeleteClick}
         onClickingEdit = {this.handleEditClick}
-        onClickingSale = {this.handleSalesClick} />
+        onClickingSale = {this.handleSalesClick}
+        onClickingClose = {this.handleCloseClick} />
     }
     
     return (

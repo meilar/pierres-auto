@@ -25,6 +25,7 @@ class EditLubeForm extends React.Component {
       <LubeForm
           buttonText = "Submit"
           formSubmissionHandler = {this.handleFormSubmission}
+          onClickingClose = {this.props.onClickingClose}
           nameValue = {this.props.lubeToEdit.name}
           brandValue = {this.props.lubeToEdit.brand}
           typeValue = {this.props.lubeToEdit.type}
@@ -39,7 +40,8 @@ class EditLubeForm extends React.Component {
 EditLubeForm.propTypes = {
   onAddLube: PropTypes.func,
   lubeToEdit: PropTypes.object,
-  handleSaveEdit: PropTypes.func
+  handleSaveEdit: PropTypes.func,
+  onClickingClose: PropTypes.func
 }
 
 export default EditLubeForm;

@@ -25,6 +25,7 @@ class NewLubeForm extends React.Component {
         <LubeForm
             buttonText = "Submit"
             formSubmissionHandler = {this.handleFormSubmission}
+            onClickingClose = {this.props.onClickingClose}
             nameValue = ""
             brandValue = ""
             typeValue = ""
@@ -37,6 +38,7 @@ class NewLubeForm extends React.Component {
 
 NewLubeForm.propTypes = {
   onAddLube: PropTypes.func,
+  onClickingClose: PropTypes.func
 }
 
 export default NewLubeForm;

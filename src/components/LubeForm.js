@@ -51,7 +51,8 @@ function LubeForm(props) {
               name="formCount"
               defaultValue={props.countValue} />
             <button className="btn btn-outline-primary lubeForm" type='submit'>{props.buttonText}</button>
-            <button className="btn btn-outline-danger lubeForm" type="reset">Reset Form</button>
+            <button className="btn btn-outline-danger lubeForm" type="reset">Reset</button>
+            <button onClick={() => props.onClickingClose} className="btn btn-outline-dark lubeForm">Cancel</button>
           </form>
       </Card>
     </React.Fragment>
@@ -65,7 +66,8 @@ LubeForm.propTypes = {
   brandValue: PropTypes.string,
   typeValue: PropTypes.string,
   ratingValue: PropTypes.string,
-  countValue: PropTypes.number
+  countValue: PropTypes.number,
+  onClickingClose: PropTypes.func
 }
 
 export default LubeForm;

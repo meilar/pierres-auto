@@ -5,6 +5,8 @@ import PropTypes from "prop-types";
 function LubeList(props) {
   return (
     <React.Fragment>
+      <p className="font-weight-bold">Motor Oils Available</p>
+      <hr />
       {props.lubeList.map((lube) =>
           <Lube 
           name={lube.name}
