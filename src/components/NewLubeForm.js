@@ -1,71 +1,43 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
-import Form from 'react-bootstrap/Form'
-import Card from "react-bootstrap/Card"
+import { v4 } from 'uuid';
 import PropTypes from "prop-types";
+import LubeForm from "./LubeForm";
 
-function AddForm(props) {
+class NewLubeForm extends React.Component {
 
-  function handleNewOil(event) {
+  handleFormSubmission = (event) => {
     event.preventDefault();
-    const newOil = {
+    console.log(event);
+    const newLube = {
       name: event.target.formName.value, 
       brand: event.target.formBrand.value, 
       rating: event.target.formRating.value,
       type: event.target.formType.value,
-      inventory: event.target.formInventory.value
-      }
-    props.onNewOilAdd(newOil);
+      count: event.target.formCount.value,
+      id: v4()
+    }
+    console.log(newLube);
+    this.props.onAddLube(newLube);
   }
 
-
-  return (
-    <React.Fragment>
-      <Card>
-        <Card.Body>
-          <div id="inputForm">
-            <Form onSubmit={handleNewOil}>
-              <Form.Group className="mb-3" controlId="formName">
-                <Form.Label>Motor Oil Name</Form.Label>
-                <Form.Control type="text" placeholder="Winter Heavy-Duty Blend" />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formBrand">
-                <Form.Label>Motor Oil Brand</Form.Label>
-                <Form.Control type="text" placeholder="Pennzoil" />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formType">
-                <Form.Label>Oil Type</Form.Label>
-                <Form.Select className="form-control" aria-label="Default select example">
-                  <option>Choose a type</option>
-                  <option value="Conventional">Conventional</option>
-                  <option value="Synthetic">Synthetic</option>
-                  <option value="Blend">Blend</option>
-                </Form.Select>
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formRating">
-                <Form.Label>Weather Rating</Form.Label>
-                <Form.Control type="text" placeholder="30S-20" />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formInventory">
-                <Form.Label>Starting inventory (Qts)</Form.Label>
-                <Form.Control type="number" placeholder="120" />
-              </Form.Group>
-              <Button variant="success" type="submit">
-                Submit
-              </Button>
-              <Button variant="danger" type="reset">
-                Cancel
-              </Button>
-            </Form>
-          </div>
-        </Card.Body>
-      </Card>
-    </React.Fragment>
-  )
+  render() {
+    return (
+      <React.Fragment>
+        <LubeForm
+            buttonText = "Submit"
+            formSubmissionHandler = {this.handleFormSubmission}
+            nameValue = ""
+            brandValue = ""
+            typeValue = ""
+            ratingValue = ""
+            countValue = {0} />
+      </React.Fragment>
+    )
+  };
 }
 
-AddForm.propTypes = {
-  onNewOilAdd: PropTypes.func
+NewLubeForm.propTypes = {
+  onAddLube: PropTypes.func
 }
 
-export default AddForm;
+export default NewLubeForm;

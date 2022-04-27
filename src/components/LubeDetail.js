@@ -1,71 +1,40 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import PropTypes from "prop-types";
 
-class LubeDetail extends React.Component {
+function LubeDetail(props) {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      showDetails: false
-    }
-  }
+  // const lube = props.lube;
 
-  showClick = () => {
-    this.setState({showDetails: true});
-  }
-
-  hideClick = () => {
-    this.setState({showDetails: false});
-  }
-
-  salesClick = () => {
-    const index = this.props.index;
-    this.props.onSalesClick(index);
-  }
-
-  render() {
-
-    let cardVisibility = null;
-    let buttonVisibility = null;
-
-    if(this.state.showDetails) {
-      cardVisibility = { display: "flex" };
-      buttonVisibility = { display: "none"};
-    } else {
-      buttonVisibility = { display: "flex" };
-      cardVisibility = { display: "none"};
-    }
-
-    return (
-      <React.Fragment>
-        <div className="detailRow">
-          <Button variant="dark" style={buttonVisibility} onClick={this.showClick}>{this.props.name}</Button>
-          <Card style={cardVisibility} id={"detailCard" + this.props.index} >
-            <Card.Body>
-              <Card.Title>{this.props.name}</Card.Title>
-              <Card.Subtitle className="mb-2 text-muted">{this.props.brand}</Card.Subtitle>
-              <Card.Text className='text-warning'>Type: {this.props.type}</Card.Text>
-              <Card.Text className="text-danger">Rating: {this.props.rating}</Card.Text>
-              <Card.Text className="text-primary">Quarts remaining: {this.props.inventory}</Card.Text>
-              <Button onClick={this.hideClick} variant="light">Close Details</Button>
-              <Button onClick={this.salesClick} variant="success">SALE: 1 Quart</Button>
-            </Card.Body>
-          </Card>
-        </div>
-      </React.Fragment>
-    )
-  }
+  return (
+    <React.Fragment>
+      <div className="detailRow">
+        <Card id={"detailCard" + props.lube.id} >
+          <Card.Body>
+            <Card.Title>{props.lube.name}</Card.Title>
+            <Card.Subtitle className="mb-2 text-muted">{props.lube.brand}</Card.Subtitle>
+            <Card.Text className='text-warning'>Type: {props.lube.type}</Card.Text>
+            <Card.Text className="text-danger">Rating: {props.lube.rating}</Card.Text>
+            <Card.Text className="text-primary">Quarts remaining: {props.lube.count}</Card.Text>
+            {/* eslint-disable-next-line */}
+            <Button onClick={() => props.onClickingSale(props.lube.id)} variant="outline-success">SALE: 1 Quart</Button>
+            {/* eslint-disable-next-line */}
+            <Button onClick={() => props.onClickingEdit(props.lube.id)} variant="outline-warning">Edit</Button>
+            {/* eslint-disable-next-line */}
+            <Button onClick={() => props.onClickingDelete(props.lube.id)} variant="outline-danger">Delete</Button>
+          </Card.Body>
+        </Card>
+      </div>
+    </React.Fragment>
+  )
 }
 
-// OilDetail.propTypes = {
-//   name: PropTypes.string,
-//   brand: PropTypes.string,
-//   inventory: PropTypes.number,
-//   type: PropTypes.string,
-//   rating: PropTypes.string,
-//   index: PropTypes.number,
-//   onSalesClick: PropTypes.func
-// }
+LubeDetail.propTypes = {
+  lube: PropTypes.object,
+  onClickingDelete: PropTypes.func,
+  onClickingSale: PropTypes.func,
+  onClickingEdit: PropTypes.func
+}
 
 export default LubeDetail;

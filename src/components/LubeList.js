@@ -9,6 +9,7 @@ function LubeList(props) {
           <Lube 
           name={lube.name}
           id={lube.id}
+          key={lube.id}
           onSelectingLube={props.onSelectingLube}/>
       )}
     </React.Fragment>
@@ -18,7 +19,6 @@ function LubeList(props) {
 LubeList.propTypes = {
   lubeList: PropTypes.array,
   onSelectingLube: PropTypes.func,
-  onSalesClick: PropTypes.func
 }
 
 export default LubeList;

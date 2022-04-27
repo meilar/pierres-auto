@@ -4,6 +4,7 @@ import LubeList from "./LubeList";
 import LubeDetail from "./LubeDetail";
 import EditLubeForm from "./EditLubeForm";
 import NewLubeForm from './NewLubeForm';
+import { v4 } from 'uuid';
 
 
 const seedData = [
@@ -12,14 +13,16 @@ const seedData = [
   brand: "Pennzoil",
   rating: "10W-30",
   type: "Synthetic",
-  lubeArray: 168
+  count: 168,
+  id: v4()
 },
 {
   name: "Low Milelage Synthetic Blend",
   brand: "Castoil",
   rating: "30W-15",
   type: "Conventional",
-  lubeArray: 20
+  count: 20,
+  id: v4()
 }
 ]
 
@@ -51,6 +54,7 @@ class LubeControl extends React.Component {
 
   handleSelectingLube = (id) => {
     const selectedLube = this.state.lubeArray.filter(lube => lube.id === id)[0];
+    console.log(selectedLube);
     this.setState({selectedLube : selectedLube});
   }
 
@@ -79,15 +83,15 @@ class LubeControl extends React.Component {
   handleSalesClick = (id) => {
     const newValue = this.state.lubeArray
       .filter(lube => lube.id === id)[0]
-      .inventory - 1;
+      .count - 1;
     console.log(newValue);
   }
 
   //DELETE
 
   handleDeleteClick = (id) => {
-    const newLubeArray = this.state.mainTicketList.filter(l => l.id !==id);
-    this.SetState({ lubeArray: newLubeArray, selectedLube: null });
+    const newLubeArray = this.state.lubeArray.filter(l => l.id !==id);
+    this.setState({ lubeArray: newLubeArray, selectedLube: null });
   }
 
   //RENDER
@@ -104,9 +108,10 @@ class LubeControl extends React.Component {
         handleSaveEdit = {this.handleSaveEdit} />
     } else if (this.state.selectedLube !== null) {
       mainPanel = <LubeDetail 
-        lube = {this.state.SelectedLube}
+        lube = {this.state.selectedLube}
         onClickingDelete = {this.handleDeleteClick}
-        onClickingEdit = {this.handleEditClick} />
+        onClickingEdit = {this.handleEditClick}
+        onClickingSale = {this.handleSalesClick} />
     }
     
     return (
@@ -115,8 +120,7 @@ class LubeControl extends React.Component {
           <div className="col-4">
             <LubeList 
               lubeList={this.state.lubeArray}
-              onSelectingLube = {this.handleSelectingLube}
-              onSalesClick={this.handleSalesClick}/>
+              onSelectingLube = {this.handleSelectingLube}/>
             <Button className="addButton" variant="outline-success" onClick={this.handleAddClick}>Add New Oil</Button>
           </div>
           <div className="col-8">

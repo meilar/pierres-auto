@@ -8,14 +8,14 @@ function Lube(props) {
       <p><a 
         onClick={() => props.onSelectingLube(props.id)} 
         href="#" 
-        class="text-primary">{props.name}</a></p>
+        className="text-primary font-weight-bold">{props.name}</a></p>
     </React.Fragment>
   );
 }
 
 Lube.propTypes = {
   name: PropTypes.string,
-  id: PropTypes.number,
+  id: PropTypes.string,
   onSelectingLube: PropTypes.func
 }
 
