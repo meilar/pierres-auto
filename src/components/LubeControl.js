@@ -94,8 +94,10 @@ class LubeControl extends React.Component {
       .filter(e => e.id !== id)
       .concat(updatedLube);
       this.setState({
-        lubeArray: editedLubeArray
+        lubeArray: editedLubeArray,
+        selectedLube: null
       });
+      this.handleSelectingLube(id);
   }
 
   //DELETE
