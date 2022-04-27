@@ -6,20 +6,83 @@ import EditLubeForm from "./EditLubeForm";
 import NewLubeForm from './NewLubeForm';
 import { v4 } from 'uuid';
 
-
 const seedData = [
   {
-  name: "High Milelage Synthetic Blend",
-  brand: "Pennzoil",
-  rating: "10W-30",
+  name: "Advanced European Formula",
+  brand: "Mobil 1",
+  rating: "0W-40",
   type: "Synthetic",
-  count: 168,
+  count: 20,
   id: v4()
 },
 {
-  name: "Low Milelage Synthetic Blend",
-  brand: "Castoil",
-  rating: "30W-15",
+  name: "STP High Mileage",
+  brand: "STP",
+  rating: "5W-20",
+  type: "Conventional",
+  count: 20,
+  id: v4()
+},
+{
+  name: "MaxLife High Mileage",
+  brand: "Valvoline",
+  rating: "10W-30",
+  type: "Synthetic",
+  count: 20,
+  id: v4()
+},
+{
+  name: "GTX Engine Oil",
+  brand: "Castrol",
+  rating: "10W-30",
+  type: "Blend",
+  count: 20,
+  id: v4()
+},
+{
+  name: "High Mileage Conventional",
+  brand: "Pennzoil",
+  rating: "5W-20",
+  type: "Conventional",
+  count: 20,
+  id: v4()
+},
+{
+  name: "STP Full Synthetic",
+  brand: "STP",
+  rating: "5W-30",
+  type: "Synthetic",
+  count: 20,
+  id: v4()
+},
+{
+  name: "All Mileage Synthetic Blend",
+  brand: "Quaker State",
+  rating: "5W-30",
+  type: "Blend",
+  count: 20,
+  id: v4()
+},
+{
+  name: "EDGE Advanced Engine Oil",
+  brand: "Castrol",
+  rating: "5W-30",
+  type: "Synthetic",
+  count: 20,
+  id: v4()
+},
+{
+  name: "Platinum High Mileage",
+  brand: "Pennzoil",
+  rating: "5W-30",
+  type: "Synthetic",
+  count: 20,
+  id: v4()
+},
+{
+  name: "Diesel Engine Oil",
+  brand: "STP",
+  rating: "15W-40",
   type: "Conventional",
   count: 20,
   id: v4()
@@ -28,6 +91,8 @@ const seedData = [
 
 class LubeControl extends React.Component {
 
+
+  
   constructor(props) {
     super(props);
     this.state = {
